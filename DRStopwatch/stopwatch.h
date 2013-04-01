@@ -34,15 +34,15 @@
 #endif
 
 typedef enum {
-	CREATED = 0,
-	STARTED = 1,
-	FINISHED = 2
+    CREATED = 0,
+    STARTED = 1,
+    FINISHED = 2
 } StopwatchStatus;
 
 typedef struct {
-	StopwatchStatus status;
-	struct timespec start;
-	struct timespec end;
+    StopwatchStatus status;
+    struct timespec start;
+    struct timespec end;
 } Stopwatch;
 
 /**

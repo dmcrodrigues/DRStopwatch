@@ -25,44 +25,44 @@
 struct timespec sw_collect_time();
 
 void sw_start(Stopwatch *s) {
-	s->start = sw_collect_time();
-	s->status = STARTED;
+    s->start = sw_collect_time();
+    s->status = STARTED;
 }
 
 void sw_stop(Stopwatch *s) {
-	s->end = sw_collect_time();
-	s->status = FINISHED;
+    s->end = sw_collect_time();
+    s->status = FINISHED;
 }
 
 double sw_get_elapsed_milliseconds(Stopwatch *s) {
-	if (s->status == CREATED) return 0;
-	struct timespec a = s->start;
-	struct timespec b = s->status != FINISHED ? sw_collect_time() : s->end;
-	double seconds = b.tv_sec  - a.tv_sec;
+    if (s->status == CREATED) return 0;
+    struct timespec a = s->start;
+    struct timespec b = s->status != FINISHED ? sw_collect_time() : s->end;
+    double seconds = b.tv_sec  - a.tv_sec;
     double nseconds = b.tv_nsec - a.tv_nsec;
     return ((seconds) * 1e3 + (nseconds/1e6));
 }
 
 double sw_get_elapsed_seconds(Stopwatch *s) {
-	struct timespec a = s->start;
-	struct timespec b = s->status != FINISHED ? sw_collect_time() : s->end;
-	double seconds = b.tv_sec  - a.tv_sec;
+    struct timespec a = s->start;
+    struct timespec b = s->status != FINISHED ? sw_collect_time() : s->end;
+    double seconds = b.tv_sec  - a.tv_sec;
     double nseconds = b.tv_nsec - a.tv_nsec;
     return (seconds + (nseconds/1e9));
 }
 
 struct timespec sw_collect_time() {
-	struct timespec time_result;
+    struct timespec time_result;
 #ifdef __MACH__
-	clock_serv_t cclock;
-	mach_timespec_t mts;
-	host_get_clock_service(mach_host_self(), SYSTEM_CLOCK, &cclock);
-	clock_get_time(cclock, &mts);
-	mach_port_deallocate(mach_task_self(), cclock);
-	time_result.tv_sec = mts.tv_sec;
-	time_result.tv_nsec = mts.tv_nsec;
+    clock_serv_t cclock;
+    mach_timespec_t mts;
+    host_get_clock_service(mach_host_self(), SYSTEM_CLOCK, &cclock);
+    clock_get_time(cclock, &mts);
+    mach_port_deallocate(mach_task_self(), cclock);
+    time_result.tv_sec = mts.tv_sec;
+    time_result.tv_nsec = mts.tv_nsec;
 #else
-	clock_gettime(CLOCK_REALTIME, &time_result);
+    clock_gettime(CLOCK_REALTIME, &time_result);
 #endif
-	return time_result;
+    return time_result;
 }

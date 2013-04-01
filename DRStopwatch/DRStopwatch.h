@@ -23,8 +23,8 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-	kElapsedTimeSeconds,
-	kElapsedTimeMilliseconds,
+    kElapsedTimeSeconds,
+    kElapsedTimeMilliseconds,
 } DRTimeOption;
 
 /**
