@@ -33,12 +33,12 @@
 
 @implementation DRStopwatch
 
-+ (id)stopwatch
++ (instancetype)stopwatch
 {
     return [[self alloc] init];
 }
 
-+ (id)stopwatchStartingNow
++ (instancetype)stopwatchStartingNow
 {
     DRStopwatch *sw = [DRStopwatch stopwatch];
     [sw start];

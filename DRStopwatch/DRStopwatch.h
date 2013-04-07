@@ -46,14 +46,14 @@ typedef enum {
  
  @return The initialized DRtopwach object.
  */
-+ (id)stopwatch;
++ (instancetype)stopwatch;
 
 /**
  Creates and initializes an `DRStopwatch` object and automatically starts counting time.
  
  @return The initialized DRtopwach object.
  */
-+ (id)stopwatchStartingNow;
++ (instancetype)stopwatchStartingNow;
 
 /**
  Initializes an `DRStopwatch` object.
