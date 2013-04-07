@@ -29,8 +29,8 @@ double sw_get_elapsed_seconds(Stopwatch *s);
 The support for Objective-C is made of a wrapper around the C/C++ API, the class `DRStopwatch`. This class provides the following API.
 
 ```Objective-C
-+ (id)stopwatch;
-+ (id)stopwatchStartingNow;
++ (instancetype)stopwatch;
++ (instancetype)stopwatchStartingNow;
 - (id)init;
 - (void)start;
 - (void)stop;
